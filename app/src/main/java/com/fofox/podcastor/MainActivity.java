@@ -1,9 +1,19 @@
-package com.arthurveys.podcastor;
+package com.fofox.podcastor;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.arthurveys.podcastor.R;
+import com.fofox.SAXParser.RSSFeed;
+
+import java.io.File;
+import java.io.InputStream;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +22,19 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        TextView tv = (TextView) findViewById(R.id.TextRSS);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+        try {
+            Resources res = getResources();
+            InputStream in_s = res.openRawResource(R.raw.rss);
+            byte[] b = new byte[in_s.available()];
+            in_s.read(b);
+            tv.setText(new String(b));
+            RSSFeed.parse(in_s);
+        } catch (Exception e) {
+            // e.printStackTrace();
+            Log.d("ERROR","Impossible d'afficher ce texte");
+        }
     }
 
 
