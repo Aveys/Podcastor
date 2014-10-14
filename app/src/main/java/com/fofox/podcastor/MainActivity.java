@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.arthurveys.podcastor.R;
 import com.fofox.model.Channel;
+import com.fofox.parser.ItunesRSSParser;
 
 import java.io.InputStream;
 
@@ -25,10 +26,13 @@ public class MainActivity extends Activity {
         tv.setMovementMethod(new ScrollingMovementMethod());
         try {
             Resources res = getResources();
-            InputStream in_s = res.openRawResource(R.raw.rss);
+            InputStream is = res.openRawResource(R.raw.rss);
+            Channel test = ItunesRSSParser.parse(is);
+            tv.setText(test.toString());
+
         } catch (Exception e) {
             // e.printStackTrace();
-            Log.d("ERROR","Impossible d'afficher ce texte");
+            e.printStackTrace();
         }
     }
 

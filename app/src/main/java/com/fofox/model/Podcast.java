@@ -1,5 +1,7 @@
 package com.fofox.model;
 
+import java.util.Date;
+
 /**
  * Created by arthurveys on 13/10/14.
  */
@@ -7,7 +9,7 @@ public class Podcast {
     public  String title;
     public  String description;
     public  String link;
-    public  String pubDate;
+    public Date pubDate;
 
     public String getTitle() {
         return title;
@@ -33,11 +35,21 @@ public class Podcast {
         this.link = link;
     }
 
-    public String getPubDate() {
+    public Date getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(String pubDate) {
+    public void setPubDate(Date pubDate) {
         this.pubDate = pubDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Podcast{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                ", pubDate=" + pubDate +
+                '}';
     }
 }

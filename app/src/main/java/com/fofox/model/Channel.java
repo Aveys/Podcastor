@@ -2,6 +2,7 @@ package com.fofox.model;
 
 import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by arthurveys on 13/10/14.
@@ -11,10 +12,17 @@ public class Channel {
     public String link;
     public String lang;
     public String description;
-    public String lstBuild;
+    public Date lstBuild;
     public  String imageUrl;
     public  String imageTitle;
-    public  String imageLink;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     ArrayList<Podcast> listPodcast;
 
@@ -24,14 +32,6 @@ public class Channel {
 
     public void setImageTitle(String imageTitle) {
         this.imageTitle = imageTitle;
-    }
-
-    public String getImageLink() {
-        return imageLink;
-    }
-
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
     }
 
     public String getTitle() {
@@ -58,11 +58,11 @@ public class Channel {
         this.lang = lang;
     }
 
-    public String getLstBuild() {
+    public Date getLstBuild() {
         return lstBuild;
     }
 
-    public void setLstBuild(String lstBuild) {
+    public void setLstBuild(Date lstBuild) {
         this.lstBuild = lstBuild;
     }
 
@@ -74,7 +74,7 @@ public class Channel {
         this.imageUrl = imageUrl;
     }
 
-    public Channel(String title, String link, String lang, String lstBuild, String imageUrl) {
+    public Channel(String title, String link, String lang, Date lstBuild, String imageUrl) {
         this.title = title;
         this.link = link;
         this.lang = lang;
@@ -105,8 +105,15 @@ public class Channel {
                 ", lstBuild='" + lstBuild + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", imageTitle='" + imageTitle + '\'' +
-                ", imageLink='" + imageLink + '\'' +
-                ", listPodcast=" + listPodcast +
+                ", listPodcast=" + listPodcastToString(listPodcast) +
                 '}';
+    }
+
+    private String listPodcastToString(ArrayList<Podcast> listPodcast) {
+        StringBuilder text = new StringBuilder();
+        for(Podcast pod : listPodcast){
+            text.append(pod.toString()+"\n");
+        }
+        return text.toString();
     }
 }
