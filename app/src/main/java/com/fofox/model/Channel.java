@@ -94,4 +94,19 @@ public class Channel {
     public void addItem(Podcast item) {
         listPodcast.add(item);
     }
+
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", lang='" + lang + '\'' +
+                ", description='" + description + '\'' +
+                ", lstBuild='" + lstBuild + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", imageTitle='" + imageTitle + '\'' +
+                ", imageLink='" + imageLink + '\'' +
+                ", listPodcast=" + listPodcast +
+                '}';
+    }
 }

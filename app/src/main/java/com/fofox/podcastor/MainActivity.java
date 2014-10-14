@@ -10,9 +10,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.arthurveys.podcastor.R;
-import com.fofox.SAXParser.RSSFeed;
+import com.fofox.model.Channel;
 
-import java.io.File;
 import java.io.InputStream;
 
 
@@ -27,10 +26,6 @@ public class MainActivity extends Activity {
         try {
             Resources res = getResources();
             InputStream in_s = res.openRawResource(R.raw.rss);
-            byte[] b = new byte[in_s.available()];
-            in_s.read(b);
-            tv.setText(new String(b));
-            RSSFeed.parse(in_s);
         } catch (Exception e) {
             // e.printStackTrace();
             Log.d("ERROR","Impossible d'afficher ce texte");
