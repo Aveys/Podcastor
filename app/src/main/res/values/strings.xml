@@ -4,5 +4,7 @@
     <string name="app_name">Podcastor</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="URLParser">url</string>
+    <string name="title_activity_parsed">Parsed Data</string>
 
 </resources>

@@ -6,10 +6,10 @@ import java.util.Date;
  * Created by arthurveys on 13/10/14.
  */
 public class Podcast {
-    public  String title;
-    public  String description;
-    public  String link;
-    public Date pubDate;
+    private String title;
+    private String description;
+    private String link;
+    private Date pubDate;
 
     public String getTitle() {
         return title;

@@ -39,19 +39,28 @@ public class ItunesRSSParser {
                             pod = new Podcast();
                         }
                         else if (tagName.equalsIgnoreCase("title") && pod==null){
-                            chan.setTitle(parser.nextText());
+                            if (chan != null) {
+                                chan.setTitle(parser.nextText());
+                            }
                         }
                         else if (tagName.equalsIgnoreCase("itunes:summary") && pod==null){
-                            chan.setDescription(parser.nextText());
+                            if (chan != null) {
+                                chan.setDescription(parser.nextText());
+                            }
                         }
-                        else if (tagName.equalsIgnoreCase("link")&& pod==null)
+                        else if (tagName.equalsIgnoreCase("link")&& pod==null) {
+                            assert chan != null;
                             chan.setLink(parser.nextText());
-                        else if (tagName.equalsIgnoreCase("language")&& pod==null)
+                        }
+                        else if (tagName.equalsIgnoreCase("language")&& pod==null) {
+                            assert chan != null;
                             chan.setLang(parser.nextText());
+                        }
                         else if (tagName.equalsIgnoreCase("lastBuildDate")&& pod==null){
                             SimpleDateFormat format = new SimpleDateFormat("EEE, d MMM yyyy HH:MM:SS ZZZ");
                             try {
                                 Date date = format.parse(parser.nextText());
+                                assert chan != null;
                                 chan.setLstBuild(date);
                             } catch (ParseException e) {
                                 e.printStackTrace();
@@ -60,8 +69,10 @@ public class ItunesRSSParser {
                         else if(tagName.equalsIgnoreCase("image")&& pod==null){
                                 parser.nextTag();
                                 tagName = parser.getName();
-                                if(tagName.equalsIgnoreCase("url"))
+                                if(tagName.equalsIgnoreCase("url")) {
+                                    assert chan != null;
                                     chan.setImageUrl(parser.getText());
+                                }
 
                         }
                         else if(tagName.equalsIgnoreCase("title") && pod!=null)

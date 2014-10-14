@@ -7,32 +7,33 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.arthurveys.podcastor.R;
-import com.fofox.model.Channel;
-import com.fofox.parser.ItunesRSSParser;
 
 import java.io.InputStream;
 
-
-public class MainActivity extends Activity {
+public class ParsedActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Resources res = getResources();
-        InputStream is = res.openRawResource(R.raw.rss);
-        Channel test = ItunesRSSParser.parse(is);
+        setContentView(R.layout.activity_parsed);
+        TextView tv = (TextView) findViewById(R.id.parsedtv);
+        tv.setMovementMethod(new ScrollingMovementMethod());
+        try {
+
+        } catch (Exception e) {
+            // e.printStackTrace();
+            Log.e("ERROR", "Impossible d'afficher ce texte");
+        }
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.parsed, menu);
         return true;
     }
 
@@ -42,6 +43,9 @@ public class MainActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        return id == R.id.action_settings || super.onOptionsItemSelected(item);
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

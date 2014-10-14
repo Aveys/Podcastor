@@ -8,13 +8,15 @@ import java.util.Date;
  * Created by arthurveys on 13/10/14.
  */
 public class Channel {
-    public String title;
-    public String link;
-    public String lang;
-    public String description;
-    public Date lstBuild;
-    public  String imageUrl;
-    public  String imageTitle;
+    private String title;
+    private String link;
+    private String lang;
+    private String description;
+    private Date lstBuild;
+    private String imageUrl;
+    private String imageTitle;
+
+    ArrayList<Podcast> listPodcast;
 
     public String getDescription() {
         return description;
@@ -23,8 +25,6 @@ public class Channel {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    ArrayList<Podcast> listPodcast;
 
     public String getImageTitle() {
         return imageTitle;
