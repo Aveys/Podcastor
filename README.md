@@ -1,4 +1,5 @@
 Podcastor
 =========
 
-Application générique de lecture de podcast
+Generic Android application for podcast editor
+
